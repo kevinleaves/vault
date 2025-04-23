@@ -22,41 +22,37 @@ interface Props {
   icon: React.ReactNode
 }
 
-const button = cva('shadow-lg inline-flex  rounded', {
-  variants: {
-    variant: {
-      primary:
-        'bg-indigo-700 text-white  hover:bg-indigo-800 focus:shadow-[#444CE7] disabled:bg-neutral-100 disabled:text-neutral-400',
-      secondary: 'bg-gray-500 text-white',
-      tertiary: 'bg-white text-indigo-700 border border-gray-500',
-      link_color: 'text-blue-500 hover:underline',
-      link_gray: 'text-gray-500 hover:underline',
-      destructive: 'bg-red-500 text-white',
+const button = cva(
+  'inline-flex rounded disabled:text-neutral-400 focus:outline-none focus:shadow-[0_0_0_4px_rgba(68,76,231,0.12)]',
+  {
+    variants: {
+      variant: {
+        primary:
+          'bg-indigo-700 text-white focus:shadow-[0_0_0_1px_rgba(68,76,231,1)] hover:bg-indigo-800 disabled:bg-neutral-100',
+        secondary:
+          'bg-white text-black hover:bg-neutral-50 border-[0.5px] border-neutral-200 shadow-[0_1_3_0px_rgba(0,0,0,0.01)] shadow-[0_1_2_0px_rgba(0,0,0,0.06)] disabled:bg-neutral-100',
+
+        tertiary:
+          'bg-white text-indigo-700 hover:bg-neutral-50 disabled:bg-white focus:shadow-[0_0_0_4px_rgba(68,76,231,0.12)]',
+        link_color: 'text-indigo-700 disabled:bg-white',
+        link_gray: 'text-neutral-600  disabled:bg-white',
+        destructive:
+          'bg-red-600 hover:bg-red-700 text-white  disabled:bg-white focus:shadow-[0_0_0_1px_rgba(217,45,32,1)] focus:shadow-[0_0_0_4px_rgba(217,45,32,0.12)]',
+      },
+      size: {
+        medium: 'py-2.5 px-3.5 text-sm gap-x-1',
+        large: 'py-2.5 px-4 gap-x-1.5 text-base',
+        xl: 'py-3 px-5 gap-x-1.5 text-base',
+        '2xl': 'py-4 px-6 gap-x-2.5 text-lg',
+      },
     },
-    size: {
-      medium: 'py-2.5 px-3.5 text-sm gap-x-1',
-      large: 'py-2.5 px-4 gap-x-1.5 text-base',
-      xl: 'py-3 px-5 gap-x-1.5 text-base',
-      '2xl': 'py-4 px-6 gap-x-2.5 text-lg',
-    },
-    state: {
-      normal: '',
-      hover: '',
-      focus: '',
-      disabled: '',
-    },
-    icons: {
-      left: '',
-      right: '',
-      both: '',
+    compoundVariants: [],
+    defaultVariants: {
+      variant: 'primary',
+      size: 'medium',
     },
   },
-  defaultVariants: {
-    variant: 'primary',
-    size: 'medium',
-    state: 'normal',
-  },
-})
+)
 function Button({
   children,
   variant,
@@ -87,12 +83,10 @@ function Button({
 
 function RouteComponent() {
   return (
-    <div>
-      <h1 className="text-5xl text-center font-semibold pt-20">
-        Hello world! Write your content here.
-      </h1>
-      <div className="">
-        <div>
+    <div className="p-4 flex flex-col lg:container mx-auto">
+      <div className="mt-10">
+        <h1 className="text-2xl font-bold">Primary</h1>
+        <div className="flex flex-wrap gap-4 items-center">
           <Button
             variant="primary"
             size="medium"
@@ -103,7 +97,7 @@ function RouteComponent() {
             iconPosition="both"
             ariaLabel="Medium primary button"
           >
-            <span>medium primary</span>
+            <span>Button CTA</span>
           </Button>
           <Button
             variant="primary"
@@ -115,7 +109,7 @@ function RouteComponent() {
             iconPosition="both"
             ariaLabel="Large primary button"
           >
-            <span>large primary</span>
+            <span>Button CTA</span>
           </Button>
           <Button
             variant="primary"
@@ -127,7 +121,7 @@ function RouteComponent() {
             iconPosition="both"
             ariaLabel="XL primary button"
           >
-            <span>xl primary</span>
+            <span>Button CTA</span>
           </Button>
           <Button
             variant="primary"
@@ -139,7 +133,7 @@ function RouteComponent() {
             iconPosition="both"
             ariaLabel="2XL primary button"
           >
-            <span>2xl primary</span>
+            <span>Button CTA</span>
           </Button>
           <Button
             variant="primary"
@@ -166,18 +160,369 @@ function RouteComponent() {
             ariaLabel="2xl primary button icon only"
           ></Button>
         </div>
-        <div>
-          <Button variant="tertiary" size="medium">
-            <span> medium destructive </span>
+        <h1 className="text-2xl font-bold mt-10">Secondary</h1>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button
+            variant="secondary"
+            size="medium"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium secondary button"
+          >
+            <span>Button CTA</span>
           </Button>
-          <Button variant="tertiary" size="large">
-            <span> large tertiary </span>
+          <Button
+            variant="secondary"
+            size="large"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large secondary button"
+          >
+            <span>Button CTA</span>
           </Button>
-          <Button variant="tertiary" size="xl">
-            <span> xl destructive </span>
+          <Button
+            variant="secondary"
+            size="xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL secondary button"
+          >
+            <span>Button CTA</span>
           </Button>
-          <Button variant="tertiary" size="2xl">
-            <span> 2xl tertiary </span>
+          <Button
+            variant="secondary"
+            size="2xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL secondary button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="secondary"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium secondary button icon only"
+          ></Button>
+          <Button
+            variant="secondary"
+            size="large"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large secondary button icon only"
+          ></Button>
+          <Button
+            variant="secondary"
+            size="xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL secondary button icon only"
+          ></Button>
+          <Button
+            variant="secondary"
+            size="2xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL secondary button icon only"
+          ></Button>
+          <Button
+            variant="secondary"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium secondary button disabled"
+            iconPosition="both"
+            disabled
+          >
+            <span>Button CTA</span>
+          </Button>
+        </div>
+        <h1 className="text-2xl font-bold mt-10">Tertiary</h1>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button
+            variant="tertiary"
+            size="medium"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium tertiary button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="tertiary"
+            size="large"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large tertiary button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="tertiary"
+            size="xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL tertiary button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="tertiary"
+            size="2xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL tertiary button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="tertiary"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="medium primary button icon only"
+          ></Button>
+          <Button
+            variant="tertiary"
+            size="large"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="large primary button icon only"
+          ></Button>
+          <Button
+            variant="tertiary"
+            size="xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="xl primary button icon only"
+          ></Button>
+          <Button
+            variant="tertiary"
+            size="2xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2xl primary button icon only"
+          ></Button>
+          <Button
+            variant="tertiary"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2xl primary button icon only"
+            iconPosition="both"
+            disabled
+          >
+            <span>Button CTA</span>
+          </Button>
+        </div>
+        <h1 className="text-2xl font-bold mt-10">Link Color</h1>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button
+            variant="link_color"
+            size="medium"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link color button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_color"
+            size="large"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large link color button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_color"
+            size="xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL link color button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_color"
+            size="2xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL link color button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_color"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link color button icon only"
+          ></Button>
+          <Button
+            variant="link_color"
+            size="large"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large link color button icon only"
+          ></Button>
+          <Button
+            variant="link_color"
+            size="xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL link color button icon only"
+          ></Button>
+          <Button
+            variant="link_color"
+            size="2xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL link color button icon only"
+          ></Button>
+          <Button
+            variant="link_color"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link color button disabled"
+            iconPosition="both"
+            disabled
+          >
+            <span>Button CTA</span>
+          </Button>
+        </div>
+        <h1 className="text-2xl font-bold mt-10">Link Gray</h1>
+        <div className="flex flex-wrap gap-4 items-center">
+          <Button
+            variant="link_gray"
+            size="medium"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link gray button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_gray"
+            size="large"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large link gray button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_gray"
+            size="xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL link gray button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_gray"
+            size="2xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL link gray button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="link_gray"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link gray button icon only"
+          ></Button>
+          <Button
+            variant="link_gray"
+            size="large"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large link gray button icon only"
+          ></Button>
+          <Button
+            variant="link_gray"
+            size="xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL link gray button icon only"
+          ></Button>
+          <Button
+            variant="link_gray"
+            size="2xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL link gray button icon only"
+          ></Button>
+          <Button
+            variant="link_gray"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium link gray button disabled"
+            iconPosition="both"
+            disabled
+          >
+            <span>Button CTA</span>
+          </Button>
+        </div>
+        <h1 className="text-2xl font-bold mt-10">Destructive</h1>
+        <div className="flex flex-wrap  gap-4 items-center">
+          <Button
+            variant="destructive"
+            size="medium"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium destructive button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="destructive"
+            size="large"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large destructive button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="destructive"
+            size="xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL destructive button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="destructive"
+            size="2xl"
+            iconPosition="both"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL destructive button"
+          >
+            <span>Button CTA</span>
+          </Button>
+          <Button
+            variant="destructive"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium destructive button icon only"
+          ></Button>
+          <Button
+            variant="destructive"
+            size="large"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Large destructive button icon only"
+          ></Button>
+          <Button
+            variant="destructive"
+            size="xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="XL destructive button icon only"
+          ></Button>
+          <Button
+            variant="destructive"
+            size="2xl"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="2XL destructive button icon only"
+          ></Button>
+          <Button
+            variant="destructive"
+            size="medium"
+            icon={<i className="ri-star-line"></i>}
+            ariaLabel="Medium destructive button disabled"
+            iconPosition="both"
+            disabled
+          >
+            <span>Button CTA</span>
           </Button>
         </div>
       </div>
