@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as NavbarIndexImport } from './routes/navbar/index'
 import { Route as ButtonIndexImport } from './routes/button/index'
 import { Route as BadgeIndexImport } from './routes/badge/index'
 
@@ -20,6 +21,12 @@ import { Route as BadgeIndexImport } from './routes/badge/index'
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NavbarIndexRoute = NavbarIndexImport.update({
+  id: '/navbar/',
+  path: '/navbar/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -60,6 +67,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ButtonIndexImport
       parentRoute: typeof rootRoute
     }
+    '/navbar/': {
+      id: '/navbar/'
+      path: '/navbar'
+      fullPath: '/navbar'
+      preLoaderRoute: typeof NavbarIndexImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -69,12 +83,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
+  '/navbar': typeof NavbarIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
+  '/navbar': typeof NavbarIndexRoute
 }
 
 export interface FileRoutesById {
@@ -82,14 +98,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/badge/': typeof BadgeIndexRoute
   '/button/': typeof ButtonIndexRoute
+  '/navbar/': typeof NavbarIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/badge' | '/button'
+  fullPaths: '/' | '/badge' | '/button' | '/navbar'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/badge' | '/button'
-  id: '__root__' | '/' | '/badge/' | '/button/'
+  to: '/' | '/badge' | '/button' | '/navbar'
+  id: '__root__' | '/' | '/badge/' | '/button/' | '/navbar/'
   fileRoutesById: FileRoutesById
 }
 
@@ -97,12 +114,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BadgeIndexRoute: typeof BadgeIndexRoute
   ButtonIndexRoute: typeof ButtonIndexRoute
+  NavbarIndexRoute: typeof NavbarIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BadgeIndexRoute: BadgeIndexRoute,
   ButtonIndexRoute: ButtonIndexRoute,
+  NavbarIndexRoute: NavbarIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -117,7 +136,8 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/badge/",
-        "/button/"
+        "/button/",
+        "/navbar/"
       ]
     },
     "/": {
@@ -128,6 +148,9 @@ export const routeTree = rootRoute
     },
     "/button/": {
       "filePath": "button/index.tsx"
+    },
+    "/navbar/": {
+      "filePath": "navbar/index.tsx"
     }
   }
 }

@@ -26,7 +26,7 @@ export interface ButtonProps
   icon?: React.ReactNode
 }
 
-const buttonVariants = cva(
+export const buttonVariants = cva(
   'inline-flex rounded disabled:text-neutral-400 focus:outline-none focus:shadow-[0_0_0_4px_rgba(68,76,231,0.12)]',
   {
     variants: {
