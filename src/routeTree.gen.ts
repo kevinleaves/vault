@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as ButtonIndexImport } from './routes/button/index'
+import { Route as BadgeIndexImport } from './routes/badge/index'
 
 // Create/Update Routes
 
@@ -28,6 +29,12 @@ const ButtonIndexRoute = ButtonIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const BadgeIndexRoute = BadgeIndexImport.update({
+  id: '/badge/',
+  path: '/badge/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -37,6 +44,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/badge/': {
+      id: '/badge/'
+      path: '/badge'
+      fullPath: '/badge'
+      preLoaderRoute: typeof BadgeIndexImport
       parentRoute: typeof rootRoute
     }
     '/button/': {
@@ -53,36 +67,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/badge/': typeof BadgeIndexRoute
   '/button/': typeof ButtonIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/button'
+  fullPaths: '/' | '/badge' | '/button'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/button'
-  id: '__root__' | '/' | '/button/'
+  to: '/' | '/badge' | '/button'
+  id: '__root__' | '/' | '/badge/' | '/button/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BadgeIndexRoute: typeof BadgeIndexRoute
   ButtonIndexRoute: typeof ButtonIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BadgeIndexRoute: BadgeIndexRoute,
   ButtonIndexRoute: ButtonIndexRoute,
 }
 
@@ -97,11 +116,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/badge/",
         "/button/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/badge/": {
+      "filePath": "badge/index.tsx"
     },
     "/button/": {
       "filePath": "button/index.tsx"
