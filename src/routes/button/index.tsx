@@ -1,11 +1,15 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { cva } from 'class-variance-authority'
+import type { VariantProps } from 'class-variance-authority'
+import { cn } from '@/lib/utils'
 
 export const Route = createFileRoute('/button/')({
   component: RouteComponent,
 })
 
-interface Props {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   children?: React.ReactNode
   variant:
     | 'primary'
@@ -19,10 +23,10 @@ interface Props {
   disabled?: boolean
   ariaLabel: string
   iconPosition?: 'left' | 'right' | 'both'
-  icon: React.ReactNode
+  icon?: React.ReactNode
 }
 
-const button = cva(
+const buttonVariants = cva(
   'inline-flex rounded disabled:text-neutral-400 focus:outline-none focus:shadow-[0_0_0_4px_rgba(68,76,231,0.12)]',
   {
     variants: {
@@ -54,7 +58,8 @@ const button = cva(
   },
 )
 
-function Button({
+export function Button({
+  className,
   children,
   variant,
   size,
@@ -63,10 +68,10 @@ function Button({
   ariaLabel,
   icon,
   iconPosition = 'left',
-}: Props) {
+}: ButtonProps) {
   return (
     <button
-      className={button({ variant, size })}
+      className={cn(buttonVariants({ variant, size }), className)}
       onClick={onClick}
       aria-label={ariaLabel}
       disabled={disabled}
@@ -91,9 +96,6 @@ function RouteComponent() {
           <Button
             variant="primary"
             size="medium"
-            onClick={(e) => {
-              console.log(e.currentTarget.value)
-            }}
             icon={<i className="ri-star-line"></i>}
             iconPosition="both"
             ariaLabel="Medium primary button"
@@ -103,9 +105,6 @@ function RouteComponent() {
           <Button
             variant="primary"
             size="large"
-            onClick={(e) => {
-              console.log(e.currentTarget.value)
-            }}
             icon={<i className="ri-star-line"></i>}
             iconPosition="both"
             ariaLabel="Large primary button"
@@ -115,9 +114,6 @@ function RouteComponent() {
           <Button
             variant="primary"
             size="xl"
-            onClick={(e) => {
-              console.log(e.currentTarget.value)
-            }}
             icon={<i className="ri-star-line"></i>}
             iconPosition="both"
             ariaLabel="XL primary button"
