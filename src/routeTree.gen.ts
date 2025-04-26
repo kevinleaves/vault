@@ -12,7 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as TextInputIndexImport } from './routes/text-input/index'
 import { Route as NavbarIndexImport } from './routes/navbar/index'
+import { Route as FeaturesGridIndexImport } from './routes/features-grid/index'
 import { Route as ButtonIndexImport } from './routes/button/index'
 import { Route as BadgeIndexImport } from './routes/badge/index'
 
@@ -24,9 +26,21 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const TextInputIndexRoute = TextInputIndexImport.update({
+  id: '/text-input/',
+  path: '/text-input/',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const NavbarIndexRoute = NavbarIndexImport.update({
   id: '/navbar/',
   path: '/navbar/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const FeaturesGridIndexRoute = FeaturesGridIndexImport.update({
+  id: '/features-grid/',
+  path: '/features-grid/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,11 +81,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ButtonIndexImport
       parentRoute: typeof rootRoute
     }
+    '/features-grid/': {
+      id: '/features-grid/'
+      path: '/features-grid'
+      fullPath: '/features-grid'
+      preLoaderRoute: typeof FeaturesGridIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/navbar/': {
       id: '/navbar/'
       path: '/navbar'
       fullPath: '/navbar'
       preLoaderRoute: typeof NavbarIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/text-input/': {
+      id: '/text-input/'
+      path: '/text-input'
+      fullPath: '/text-input'
+      preLoaderRoute: typeof TextInputIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -83,14 +111,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
+  '/features-grid': typeof FeaturesGridIndexRoute
   '/navbar': typeof NavbarIndexRoute
+  '/text-input': typeof TextInputIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
+  '/features-grid': typeof FeaturesGridIndexRoute
   '/navbar': typeof NavbarIndexRoute
+  '/text-input': typeof TextInputIndexRoute
 }
 
 export interface FileRoutesById {
@@ -98,15 +130,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/badge/': typeof BadgeIndexRoute
   '/button/': typeof ButtonIndexRoute
+  '/features-grid/': typeof FeaturesGridIndexRoute
   '/navbar/': typeof NavbarIndexRoute
+  '/text-input/': typeof TextInputIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/badge' | '/button' | '/navbar'
+  fullPaths:
+    | '/'
+    | '/badge'
+    | '/button'
+    | '/features-grid'
+    | '/navbar'
+    | '/text-input'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/badge' | '/button' | '/navbar'
-  id: '__root__' | '/' | '/badge/' | '/button/' | '/navbar/'
+  to: '/' | '/badge' | '/button' | '/features-grid' | '/navbar' | '/text-input'
+  id:
+    | '__root__'
+    | '/'
+    | '/badge/'
+    | '/button/'
+    | '/features-grid/'
+    | '/navbar/'
+    | '/text-input/'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,14 +161,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BadgeIndexRoute: typeof BadgeIndexRoute
   ButtonIndexRoute: typeof ButtonIndexRoute
+  FeaturesGridIndexRoute: typeof FeaturesGridIndexRoute
   NavbarIndexRoute: typeof NavbarIndexRoute
+  TextInputIndexRoute: typeof TextInputIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BadgeIndexRoute: BadgeIndexRoute,
   ButtonIndexRoute: ButtonIndexRoute,
+  FeaturesGridIndexRoute: FeaturesGridIndexRoute,
   NavbarIndexRoute: NavbarIndexRoute,
+  TextInputIndexRoute: TextInputIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -137,7 +188,9 @@ export const routeTree = rootRoute
         "/",
         "/badge/",
         "/button/",
-        "/navbar/"
+        "/features-grid/",
+        "/navbar/",
+        "/text-input/"
       ]
     },
     "/": {
@@ -149,8 +202,14 @@ export const routeTree = rootRoute
     "/button/": {
       "filePath": "button/index.tsx"
     },
+    "/features-grid/": {
+      "filePath": "features-grid/index.tsx"
+    },
     "/navbar/": {
       "filePath": "navbar/index.tsx"
+    },
+    "/text-input/": {
+      "filePath": "text-input/index.tsx"
     }
   }
 }
