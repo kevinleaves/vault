@@ -10,7 +10,7 @@ export const Feature = ({ icon, featureName, description }: FeatureProps) => {
   return (
     <li
       aria-label="feature cell"
-      className="flex flex-col list-none gap-5 items-center col-span-4"
+      className="flex flex-col h-full list-none gap-5 items-center col-span-4 md:col-span-3 lg:col-span-4"
     >
       {icon}
       <div className="text-center">

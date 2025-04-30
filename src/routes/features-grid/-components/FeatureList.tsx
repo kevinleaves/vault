@@ -54,7 +54,7 @@ const features = [
 
 export const FeatureList = () => {
   return (
-    <ul className="grid justify-center items-center gap-8">
+    <ul className="grid justify-center items-center gap-8 md:grid-cols-6 lg:grid-cols-12 lg:gap-y-12 lg:gap-x-8">
       {features.map(({ icon, featureName, description }) => {
         return (
           <Feature
