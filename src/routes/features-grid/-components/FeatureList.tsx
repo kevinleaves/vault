@@ -1,10 +1,9 @@
-import React from 'react'
 import { Feature } from './Feature'
 
 const features = [
   {
     icon: (
-      <i className="ri-download-2-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-download-2-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'Infinite Download',
     description:
@@ -12,7 +11,7 @@ const features = [
   },
   {
     icon: (
-      <i className="ri-brush-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-brush-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'Purely Handcrafted',
     description:
@@ -20,7 +19,7 @@ const features = [
   },
   {
     icon: (
-      <i className="ri-copyright-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-copyright-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'All Are Under licensed',
     description:
@@ -28,7 +27,7 @@ const features = [
   },
   {
     icon: (
-      <i className="ri-refund-2-fill text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-refund-2-fill text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'Cancel Anytime',
     description:
@@ -36,7 +35,7 @@ const features = [
   },
   {
     icon: (
-      <i className="ri-team-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-team-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'Empowering For Team',
     description:
@@ -44,7 +43,7 @@ const features = [
   },
   {
     icon: (
-      <i className="ri-refresh-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1)] shadow-[0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
+      <i className="ri-refresh-line text-indigo-700 h-12 w-12 inline-flex justify-center items-center shadow-[0_1px_3px_0_rgba(0,0,0,0.1),0_1px_2px_0_rgba(0,0,0,0.06)] rounded-full"></i>
     ),
     featureName: 'No Limitations',
     description:
