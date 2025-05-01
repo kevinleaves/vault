@@ -38,7 +38,7 @@ const teamMembers = [
 
 function RouteComponent() {
   return (
-    <section className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-y-12 gap-x-8 py-12 px-4 lg:gap-y-16 md:py-16 lg:py-24 lg:px-14">
+    <section className="bg-white grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-y-12 gap-x-8 py-12 px-4 lg:gap-y-16 md:py-16 lg:py-24 lg:px-14">
       <div className="col-span-4 md:col-span-6 lg:col-span-12 justify-self-center text-center">
         <div className="text-base text-indigo-700 font-semibold mb-3">Team</div>
         <h2 className="text-3xl md:text-5xl text-neutral-900 font-semibold mb-4">
