@@ -13,6 +13,7 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
 import { Route as TextInputIndexImport } from './routes/text-input/index'
+import { Route as TeamSectionIndexImport } from './routes/team-section/index'
 import { Route as NavbarIndexImport } from './routes/navbar/index'
 import { Route as FeaturesGridIndexImport } from './routes/features-grid/index'
 import { Route as ButtonIndexImport } from './routes/button/index'
@@ -29,6 +30,12 @@ const IndexRoute = IndexImport.update({
 const TextInputIndexRoute = TextInputIndexImport.update({
   id: '/text-input/',
   path: '/text-input/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const TeamSectionIndexRoute = TeamSectionIndexImport.update({
+  id: '/team-section/',
+  path: '/team-section/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NavbarIndexImport
       parentRoute: typeof rootRoute
     }
+    '/team-section/': {
+      id: '/team-section/'
+      path: '/team-section'
+      fullPath: '/team-section'
+      preLoaderRoute: typeof TeamSectionIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/text-input/': {
       id: '/text-input/'
       path: '/text-input'
@@ -113,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/button': typeof ButtonIndexRoute
   '/features-grid': typeof FeaturesGridIndexRoute
   '/navbar': typeof NavbarIndexRoute
+  '/team-section': typeof TeamSectionIndexRoute
   '/text-input': typeof TextInputIndexRoute
 }
 
@@ -122,6 +137,7 @@ export interface FileRoutesByTo {
   '/button': typeof ButtonIndexRoute
   '/features-grid': typeof FeaturesGridIndexRoute
   '/navbar': typeof NavbarIndexRoute
+  '/team-section': typeof TeamSectionIndexRoute
   '/text-input': typeof TextInputIndexRoute
 }
 
@@ -132,6 +148,7 @@ export interface FileRoutesById {
   '/button/': typeof ButtonIndexRoute
   '/features-grid/': typeof FeaturesGridIndexRoute
   '/navbar/': typeof NavbarIndexRoute
+  '/team-section/': typeof TeamSectionIndexRoute
   '/text-input/': typeof TextInputIndexRoute
 }
 
@@ -143,9 +160,17 @@ export interface FileRouteTypes {
     | '/button'
     | '/features-grid'
     | '/navbar'
+    | '/team-section'
     | '/text-input'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/badge' | '/button' | '/features-grid' | '/navbar' | '/text-input'
+  to:
+    | '/'
+    | '/badge'
+    | '/button'
+    | '/features-grid'
+    | '/navbar'
+    | '/team-section'
+    | '/text-input'
   id:
     | '__root__'
     | '/'
@@ -153,6 +178,7 @@ export interface FileRouteTypes {
     | '/button/'
     | '/features-grid/'
     | '/navbar/'
+    | '/team-section/'
     | '/text-input/'
   fileRoutesById: FileRoutesById
 }
@@ -163,6 +189,7 @@ export interface RootRouteChildren {
   ButtonIndexRoute: typeof ButtonIndexRoute
   FeaturesGridIndexRoute: typeof FeaturesGridIndexRoute
   NavbarIndexRoute: typeof NavbarIndexRoute
+  TeamSectionIndexRoute: typeof TeamSectionIndexRoute
   TextInputIndexRoute: typeof TextInputIndexRoute
 }
 
@@ -172,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   ButtonIndexRoute: ButtonIndexRoute,
   FeaturesGridIndexRoute: FeaturesGridIndexRoute,
   NavbarIndexRoute: NavbarIndexRoute,
+  TeamSectionIndexRoute: TeamSectionIndexRoute,
   TextInputIndexRoute: TextInputIndexRoute,
 }
 
@@ -190,6 +218,7 @@ export const routeTree = rootRoute
         "/button/",
         "/features-grid/",
         "/navbar/",
+        "/team-section/",
         "/text-input/"
       ]
     },
@@ -207,6 +236,9 @@ export const routeTree = rootRoute
     },
     "/navbar/": {
       "filePath": "navbar/index.tsx"
+    },
+    "/team-section/": {
+      "filePath": "team-section/index.tsx"
     },
     "/text-input/": {
       "filePath": "text-input/index.tsx"
