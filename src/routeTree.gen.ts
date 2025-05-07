@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as TextInputIndexImport } from './routes/text-input/index'
 import { Route as TeamSectionIndexImport } from './routes/team-section/index'
 import { Route as NavbarIndexImport } from './routes/navbar/index'
+import { Route as FooterSimpleIndexImport } from './routes/footer-simple/index'
 import { Route as FeaturesGridIndexImport } from './routes/features-grid/index'
 import { Route as ButtonIndexImport } from './routes/button/index'
 import { Route as BadgeIndexImport } from './routes/badge/index'
@@ -42,6 +43,12 @@ const TeamSectionIndexRoute = TeamSectionIndexImport.update({
 const NavbarIndexRoute = NavbarIndexImport.update({
   id: '/navbar/',
   path: '/navbar/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const FooterSimpleIndexRoute = FooterSimpleIndexImport.update({
+  id: '/footer-simple/',
+  path: '/footer-simple/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesGridIndexImport
       parentRoute: typeof rootRoute
     }
+    '/footer-simple/': {
+      id: '/footer-simple/'
+      path: '/footer-simple'
+      fullPath: '/footer-simple'
+      preLoaderRoute: typeof FooterSimpleIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/navbar/': {
       id: '/navbar/'
       path: '/navbar'
@@ -126,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
   '/features-grid': typeof FeaturesGridIndexRoute
+  '/footer-simple': typeof FooterSimpleIndexRoute
   '/navbar': typeof NavbarIndexRoute
   '/team-section': typeof TeamSectionIndexRoute
   '/text-input': typeof TextInputIndexRoute
@@ -136,6 +151,7 @@ export interface FileRoutesByTo {
   '/badge': typeof BadgeIndexRoute
   '/button': typeof ButtonIndexRoute
   '/features-grid': typeof FeaturesGridIndexRoute
+  '/footer-simple': typeof FooterSimpleIndexRoute
   '/navbar': typeof NavbarIndexRoute
   '/team-section': typeof TeamSectionIndexRoute
   '/text-input': typeof TextInputIndexRoute
@@ -147,6 +163,7 @@ export interface FileRoutesById {
   '/badge/': typeof BadgeIndexRoute
   '/button/': typeof ButtonIndexRoute
   '/features-grid/': typeof FeaturesGridIndexRoute
+  '/footer-simple/': typeof FooterSimpleIndexRoute
   '/navbar/': typeof NavbarIndexRoute
   '/team-section/': typeof TeamSectionIndexRoute
   '/text-input/': typeof TextInputIndexRoute
@@ -159,6 +176,7 @@ export interface FileRouteTypes {
     | '/badge'
     | '/button'
     | '/features-grid'
+    | '/footer-simple'
     | '/navbar'
     | '/team-section'
     | '/text-input'
@@ -168,6 +186,7 @@ export interface FileRouteTypes {
     | '/badge'
     | '/button'
     | '/features-grid'
+    | '/footer-simple'
     | '/navbar'
     | '/team-section'
     | '/text-input'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/badge/'
     | '/button/'
     | '/features-grid/'
+    | '/footer-simple/'
     | '/navbar/'
     | '/team-section/'
     | '/text-input/'
@@ -188,6 +208,7 @@ export interface RootRouteChildren {
   BadgeIndexRoute: typeof BadgeIndexRoute
   ButtonIndexRoute: typeof ButtonIndexRoute
   FeaturesGridIndexRoute: typeof FeaturesGridIndexRoute
+  FooterSimpleIndexRoute: typeof FooterSimpleIndexRoute
   NavbarIndexRoute: typeof NavbarIndexRoute
   TeamSectionIndexRoute: typeof TeamSectionIndexRoute
   TextInputIndexRoute: typeof TextInputIndexRoute
@@ -198,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   BadgeIndexRoute: BadgeIndexRoute,
   ButtonIndexRoute: ButtonIndexRoute,
   FeaturesGridIndexRoute: FeaturesGridIndexRoute,
+  FooterSimpleIndexRoute: FooterSimpleIndexRoute,
   NavbarIndexRoute: NavbarIndexRoute,
   TeamSectionIndexRoute: TeamSectionIndexRoute,
   TextInputIndexRoute: TextInputIndexRoute,
@@ -217,6 +239,7 @@ export const routeTree = rootRoute
         "/badge/",
         "/button/",
         "/features-grid/",
+        "/footer-simple/",
         "/navbar/",
         "/team-section/",
         "/text-input/"
@@ -233,6 +256,9 @@ export const routeTree = rootRoute
     },
     "/features-grid/": {
       "filePath": "features-grid/index.tsx"
+    },
+    "/footer-simple/": {
+      "filePath": "footer-simple/index.tsx"
     },
     "/navbar/": {
       "filePath": "navbar/index.tsx"
